@@ -1,0 +1,19 @@
+.form {
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  grid-auto-rows: 30px;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.form input {
+  border-radius: 5px;
+  border: 1px grey solid;
+}
+
+.form button {
+  color: white;
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+}

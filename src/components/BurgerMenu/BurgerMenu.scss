@@ -1,5 +1,5 @@
 .burger-menu {
-  position: absolute;
+  position: fixed;
   z-index: 3;
   padding: 20px;
   div {
@@ -31,4 +31,15 @@
 .menu-opened div:nth-child(3) {
   transform: translate(0px, -8px) rotate(45deg);
   width: 1rem;
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    top: 8px;
+    // padding: 25px 20px;
+  }
+  // .menu-opened {
+  //   padding: 3px;
+  //   margin: 17px;
+  // }
 }

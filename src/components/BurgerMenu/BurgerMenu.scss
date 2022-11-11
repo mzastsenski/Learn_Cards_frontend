@@ -1,0 +1,34 @@
+.burger-menu {
+  position: absolute;
+  z-index: 3;
+  padding: 20px;
+  div {
+    width: 1.5rem;
+    border-radius: 4px;
+    padding: 2px;
+    background: white;
+    margin: 4px;
+    transition: 0.25s;
+  }
+}
+
+.menu-opened {
+  background: red;
+  border-radius: 7px;
+  padding: 8px;
+  margin: 12px;
+  div {
+    width: 1rem;
+  }
+}
+.menu-opened div:nth-child(1) {
+  transform: translate(0px, 8px) rotate(-45deg);
+  width: 1rem;
+}
+.menu-opened div:nth-child(2) {
+  opacity: 0;
+}
+.menu-opened div:nth-child(3) {
+  transform: translate(0px, -8px) rotate(45deg);
+  width: 1rem;
+}

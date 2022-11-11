@@ -1,5 +1,5 @@
 import Card from "../Card/Card";
-import s from "./CardsContainer.module.css";
+import s from "./CardsContainer.module.scss";
 import { useSelector } from "react-redux";
 
 export default function CardsContainer() {

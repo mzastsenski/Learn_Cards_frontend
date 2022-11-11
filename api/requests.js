@@ -2,10 +2,10 @@ const express = require("express");
 require("dotenv").config();
 const router = express.Router();
 // const db = require("./db");
-const { auth, getUserFromToken } = require("./auth_functions.js");
-const { MongoClient } = require("mongodb");
+// const { MongoClient } = require("mongodb");
+// const MONGO_URI = require("./db.js");
 const { Client } = require("pg");
-const MONGO_URI = require("./db.js");
+const { auth, getUserFromToken } = require("./auth_functions.js");
 const db = new Client({
   connectionString: process.env.POSTGRES_URL,
   ssl: {
@@ -37,34 +37,6 @@ router.delete("/api/deleteCard", auth, (req, res) => {
   const values = [req.body.id];
   db.query(sql, values, (err, result) => {
     res.sendStatus(200);
-  });
-});
-
-router.post("/api/postMongo", (req, res) => {
-  MongoClient.connect(MONGO_URI, (err, db) => {
-    if (err) throw err;
-    db.db("testDB")
-      .collection("cards")
-      .updateOne({ id: 1 }, { $set: { cards: req.body } }, (err, result) => {
-        if (err) throw err;
-        db.close();
-        // console.log("1 document updated");
-        // res.json("1 document updated");
-      });
-  });
-});
-
-router.get("/api/cardsMongo", (req, res) => {
-  MongoClient.connect(MONGO_URI, (err, db) => {
-    if (err) throw err;
-    db.db("testDB")
-      .collection("cards")
-      .find({})
-      .toArray((err, result) => {
-        if (err) console.log(err);
-        db.close();
-        res.json(result[0].cards);
-      });
   });
 });
 

@@ -1,10 +1,11 @@
-import s from "./Collections.module.css";
+import s from "./Collections.module.scss";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setCollection, setCards } from "../../redux/data";
+import { setCollection, setCards, setOpened } from "../../redux/data";
 
 export default function CardsList() {
   const data = useSelector((state) => state.data);
+  const isOpened = useSelector((state) => state.menuOpened);
   const [collections, setCollections] = useState([]);
   const dispatch = useDispatch();
 
@@ -22,6 +23,7 @@ export default function CardsList() {
     setCollections([...collections, newCollection]);
     dispatch(setCollection(newCollection));
     changeCollection(newCollection);
+    dispatch(setOpened(isOpened));
   };
 
   const changeCollection = (collection) => {
@@ -31,21 +33,24 @@ export default function CardsList() {
     });
     dispatch(setCards(newCards));
     dispatch(setCollection(collection));
+    dispatch(setOpened(!isOpened));
   };
 
   return (
-    <div>
-      <div className={s.cards_list}>
+    <div className={[s.collections, isOpened ? s.show : null].join(" ")}>
+      <form className={s.form} onSubmit={(e) => addToSet(e)}>
+        <label>
+          <input type="text" placeholder="New Collection " name="name" />
+        </label>
+        <button>Add</button>
+      </form>
+      <div className={s.collections_list}>
         {collections.sort().map((e, i) => (
           <button key={i} onClick={() => changeCollection(e)}>
             {e}
           </button>
         ))}
       </div>
-      <form className={s.form} onSubmit={(e) => addToSet(e)}>
-        <input type="text" placeholder=" New Collection " name="name" />
-        <button>Add Collection</button>
-      </form>
     </div>
   );
 }

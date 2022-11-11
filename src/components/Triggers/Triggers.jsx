@@ -1,4 +1,4 @@
-import s from "./Triggers.module.css";
+import s from "./Triggers.module.scss";
 import { words } from "../data/words";
 import { postCard, deleteOneCard } from "../../Ajax";
 import { useSelector, useDispatch } from "react-redux";

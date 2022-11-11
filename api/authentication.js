@@ -39,7 +39,6 @@ router.post("/api/logout", (req, res) => {
 
 router.post("/api/signUp", (req, res) => {
   const sql = `SELECT * FROM users_cards WHERE name = $1`;
-  // const sql = `SELECT * FROM users_cards`;
   const sql2 = `INSERT INTO users_cards (name, password) VALUES ($1,$2)`;
   const values1 = [req.body.user];
   const values = [req.body.user, btoa(req.body.pass)];

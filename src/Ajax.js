@@ -39,5 +39,8 @@ export const deleteOneCard = async (data) => {
   });
 };
 
+export const checkUser = async () =>
+  await fetch(`${url}api/checkUser`, { method: "POST" });
+
 export const postLogout = async () =>
   await fetch(`${url}api/logout`, { method: "POST" }).then((res) => res.json());

@@ -1,0 +1,69 @@
+$menu-width: 100%;
+
+.collections {
+  position: fixed;
+  z-index: 2;
+  background-color: #f9faff;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $menu-width;
+  height: 100%;
+  padding: 22px 12px;
+  font-size: 16px;
+  overflow: scroll;
+  transition: 0.28s;
+  transform: translateX(calc($menu-width * -1));
+}
+
+.show {
+  transform: translateX(0);
+}
+.form {
+  width: 228px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+  margin-top: 7px;
+}
+
+.form label {
+  border-radius: 5px;
+  border: 1px grey solid;
+  background-color: #f7f8fa;
+  padding-left: 10px;
+}
+
+.form label input {
+  border-radius: 5px;
+  border: none;
+  height: 32px;
+  outline: none;
+  background: none;
+}
+
+.form button {
+  color: white;
+  background-color: rgb(19, 140, 19);
+  border: none;
+  border-radius: 5px;
+}
+
+.collections_list {
+  display: flex;
+  flex-direction: column;
+  button {
+    width: 225px;
+    height: 42px;
+    color: white;
+    background-color: rgb(41, 128, 185);
+    border: transparent 1px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 14px;
+    margin: 5px;
+    text-align: left;
+  }
+}

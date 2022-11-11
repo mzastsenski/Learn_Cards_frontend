@@ -1,4 +1,6 @@
 import "./Header.scss";
+import Collections from "../Collections/Collections";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { BiUser as UserIcon } from "react-icons/bi";
@@ -26,6 +28,8 @@ const Header = (props) => {
 
   return (
     <div className="header">
+      <BurgerMenu />
+      <Collections />
       <span className="title">
         <NavLink to="/" className="menuItem1">
           Language-Cards

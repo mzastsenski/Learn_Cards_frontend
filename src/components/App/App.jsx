@@ -1,24 +1,32 @@
-import s from "./App.module.css";
+import s from "./App.module.scss";
 import CardsContainer from "../CardsContainer/CardsContainer";
-import CardsList from "../Collections/Collections";
 import Triggers from "../Triggers/Triggers";
 import Form from "../Form/Form";
 import { words } from "../data/words";
-import { useEffect } from "react";
-import { getData } from "../../Ajax";
+import { useEffect, useRef } from "react";
+import { checkUser, getData } from "../../Ajax";
 import { useSelector, useDispatch } from "react-redux";
-import { setData, setCards, setCollection } from "../../redux/data";
+import { setData, setCards, setCollection, logout } from "../../redux/data";
 
 const App = () => {
   const user = useSelector((state) => state.user);
   const collection = useSelector((state) => state.collection);
   const dispatch = useDispatch();
+  const effectRan = useRef(true);
 
   useEffect(() => {
-    user
-      ? getData(user).then((res) => setRedux(res))
-      : dispatch(setCards(words));
+    if (effectRan.current) {
+      user ? check() : dispatch(setCards(words));
+    }
+    return () => (effectRan.current = false);
   }, [user]);
+
+  const check = () => {
+    checkUser().then((res) => {
+      if (res.status !== 200) dispatch(logout());
+      else getData(user).then((res) => setRedux(res));
+    });
+  };
 
   const setRedux = (data) => {
     const cards = data.filter((e) => e.collection === collection);
@@ -45,7 +53,6 @@ const App = () => {
       <Form />
       <CardsContainer />
       <Triggers />
-      <CardsList />
     </div>
   );
 };

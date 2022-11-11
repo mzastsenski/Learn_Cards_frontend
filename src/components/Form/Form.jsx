@@ -1,7 +1,7 @@
-import s from "./Form.module.css";
-import { postCard } from "../../Ajax";
+import s from "./Form.module.scss";
+import { postCard, getData } from "../../Ajax";
 import { useSelector, useDispatch } from "react-redux";
-import { setCards, setData } from "../../redux/data";
+import { setCards, setData, logout } from "../../redux/data";
 
 export default function Form() {
   const user = useSelector((state) => state.user);
@@ -13,14 +13,31 @@ export default function Form() {
   const submit = (e) => {
     e.preventDefault();
     const newCard = {
+      id: Date.now(),
       rus: e.target.ru.value,
       eng: e.target.eng.value,
       lang: "eng",
-      collection: collection 
+      collection: collection,
     };
-    dispatch(setCards([...cards, newCard]));
-    dispatch(setData([...data, newCard]));
-    if (user) postCard(newCard);
+    if (user) {
+      addCardToDB(newCard);
+    } else {
+      dispatch(setCards([...cards, newCard]));
+      dispatch(setData([...data, newCard]));
+    }
+  };
+
+  const addCardToDB = (newCard) => {
+    postCard(newCard).then((res) => {
+      if (res.status !== 200) dispatch(logout());
+      else {
+        getData(user).then((data) => {
+          const cards = data.filter((e) => e.collection === collection);
+          dispatch(setData(data));
+          dispatch(setCards(cards));
+        });
+      }
+    });
   };
 
   return (

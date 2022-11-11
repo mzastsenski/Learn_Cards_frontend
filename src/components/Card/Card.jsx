@@ -1,7 +1,7 @@
-import s from "./Card.module.css";
+import s from "./Card.module.scss";
 import { deleteOneCard } from "../../Ajax";
 import { useSelector, useDispatch } from "react-redux";
-import { setData, setCards } from "../../redux/data";
+import { setData, setCards, logout } from "../../redux/data";
 
 export default function Card({ id, rus, eng, lang }) {
   const dispatch = useDispatch();
@@ -28,7 +28,10 @@ export default function Card({ id, rus, eng, lang }) {
     const newData = data.filter((e) => e.id !== id);
     dispatch(setCards(newCards));
     dispatch(setData(newData));
-    if (user) deleteOneCard({ id: id });
+    if (user)
+      deleteOneCard({ id: id }).then((res) =>
+        res.status !== 200 ? dispatch(logout()) : null
+      );
   };
 
   const renderWord = lang === "eng" ? eng : rus;

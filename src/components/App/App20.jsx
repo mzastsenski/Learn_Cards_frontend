@@ -7,10 +7,7 @@ import { useState, useEffect } from "react";
 const App = () => {
   const [cards, setCards] = useState([]);
   let url = "http://localhost:4000";
-  url = "https://learncards.mzas.de";
-
-
-
+  // url = "https://learncards.mzas.de";
   
   useEffect(() => {
     get();
@@ -50,16 +47,6 @@ const App = () => {
   const clear = () => {
     setCards(words);
     postData(words);
-  };
-  const clear2 = () => {
-    setCards([
-      { id: 1, rus: "hund", eng: "dog", lang: "eng" },
-      { id: 2, rus: "kater", eng: "cat", lang: "eng" },
-    ]);
-    postData([
-      { id: 1, rus: "hund", eng: "dog", lang: "eng" },
-      { id: 2, rus: "kater", eng: "cat", lang: "eng" },
-    ]);
   };
 
   // const change_lang = (id) => {
@@ -114,7 +101,6 @@ const App = () => {
         change_to_rus={change_to_rus}
         change_lang={change_lang}
         clear={clear}
-        clear2={clear2}
       />
     </div>
   );

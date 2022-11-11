@@ -1,13 +1,13 @@
 import s from "./Card.module.css";
-import { useState } from "react";
+// import { useState } from "react";
 
 export default function Card({ id, rus, eng, lang, change_lang }) {
-  const [state, setState] = useState(lang);
+  // const [state, setState] = useState(lang);
 
-  const click = () => {
-    if (state === "rus") setState("eng");
-    else setState("rus");
-  };
+  // const click = () => {
+  //   if (state === "rus") setState("eng");
+  //   else setState("rus");
+  // };
 
   const renderWord = lang === "eng" ? eng : rus;
   const style = {

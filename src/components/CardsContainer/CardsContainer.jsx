@@ -1,16 +1,14 @@
 import Card from "../Card/Card";
 import s from "./CardsContainer.module.css";
+import { useSelector } from "react-redux";
 
-export default function CardsContainer({ words, change_lang, deleteCard }) {
+export default function CardsContainer() {
+  const cards = useSelector((state) => state.renderCards);
+
   return (
     <div className={s.cards_container}>
-      {words.map((e) => (
-        <Card
-          {...e}
-          key={e.id}
-          change_lang={change_lang}
-          deleteCard={deleteCard}
-        />
+      {cards.map((e, i) => (
+        <Card {...e} key={i} />
       ))}
     </div>
   );

@@ -8,10 +8,6 @@
     "server": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "n"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -24,6 +20,7 @@
     "mongodb": "^4.11.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.20",
+    "path": "^0.12.7",
     "pg": "^8.8.0"
   }
 }

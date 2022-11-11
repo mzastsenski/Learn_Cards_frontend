@@ -1,3 +1,20 @@
+.cards_list button {
+  color: white;
+  background-color: green;
+  border: transparent 1px;
+  border-radius: 5px;
+  padding: 10px 16px;
+  margin: 5px;
+}
+
+.red button {
+  background-color: red;
+}
+
+button.red {
+  background-color: red;
+}
+
 .form {
   display: grid;
   grid-template-columns: repeat(4, 120px);

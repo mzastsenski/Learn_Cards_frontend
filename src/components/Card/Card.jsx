@@ -1,5 +1,5 @@
 import s from "./Card.module.scss";
-import { deleteOneCard } from "../../Ajax";
+import { deleteOneCard } from "../ajax/ajax";
 import { useSelector, useDispatch } from "react-redux";
 import { setData, setCards, logout } from "../../redux/data";
 

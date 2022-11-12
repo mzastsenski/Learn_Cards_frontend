@@ -4,7 +4,7 @@ import Triggers from "../Triggers/Triggers";
 import Form from "../Form/Form";
 import { words } from "../data/words";
 import { useEffect, useRef } from "react";
-import { checkUser, getData } from "../../Ajax";
+import { checkUser, getData } from "../ajax/ajax";
 import { useSelector, useDispatch } from "react-redux";
 import { setData, setCards, setCollection, logout } from "../../redux/data";
 

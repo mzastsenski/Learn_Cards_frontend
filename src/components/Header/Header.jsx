@@ -32,7 +32,7 @@ const Header = (props) => {
       <Collections />
       <span className="title">
         <NavLink to="/" className="menuItem1">
-          Language-Cards
+          Learn-Cards
         </NavLink>
       </span>
       {user ? (

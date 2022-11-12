@@ -1,6 +1,6 @@
 import s from "./Triggers.module.scss";
 import { words } from "../data/words";
-import { postCard, deleteOneCard } from "../../Ajax";
+import { postCard, deleteOneCard } from "../ajax/ajax";
 import { useSelector, useDispatch } from "react-redux";
 import { setData, setCards, setCollection } from "../../redux/data";
 
@@ -36,7 +36,7 @@ export default function Triggers() {
     dispatch(setCards(newCards));
   };
 
-  const change_to_rus = () => {
+  const change_to_de = () => {
     const newCards = cards.map((el) => ({
       ...el,
       lang: "rus",
@@ -46,8 +46,8 @@ export default function Triggers() {
 
   return (
     <div className={s.triggers}>
-      <button onClick={change_to_rus}>Rus</button>
       <button onClick={change_to_eng}>Eng</button>
+      <button onClick={change_to_de}>De</button>
       <button className={s.red} onClick={() => clear()}>
         Reset
       </button>

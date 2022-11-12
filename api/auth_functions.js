@@ -19,7 +19,7 @@ const auth = (req, res, next) => {
       const newToken = newAccessToken({ name: user.name });
       res.cookie("token", newToken, {
         httpOnly: true,
-        maxAge: 60 * 60 * 1000,
+        maxAge: 21 * 24 * 60 * 60 * 1000,
       });
     }
     next();

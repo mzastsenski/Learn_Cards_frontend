@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { postLogout } from "../Ajax";
+import { postLogout } from "../components/ajax/ajax";
 
 export const dataSlice = createSlice({
   name: "data",

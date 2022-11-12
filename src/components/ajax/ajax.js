@@ -1,5 +1,4 @@
 let url = "";
-// url = "https://learncards.mzas.de/";
 
 export const getData = (user) =>
   fetch(`${url}api/cards/${user}`).then((res) => res.json());

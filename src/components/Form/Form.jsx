@@ -1,5 +1,5 @@
 import s from "./Form.module.scss";
-import { postCard, getData } from "../../Ajax";
+import { postCard, getData } from "../ajax/ajax";
 import { useSelector, useDispatch } from "react-redux";
 import { setCards, setData, logout } from "../../redux/data";
 
@@ -14,7 +14,7 @@ export default function Form() {
     e.preventDefault();
     const newCard = {
       id: Date.now(),
-      rus: e.target.ru.value,
+      rus: e.target.de.value,
       eng: e.target.eng.value,
       lang: "eng",
       collection: collection,
@@ -43,7 +43,7 @@ export default function Form() {
   return (
     <form className={s.form} onSubmit={(e) => submit(e)}>
       <input type="text" placeholder=" eng" name="eng" />
-      <input type="text" placeholder=" rus" name="ru" />
+      <input type="text" placeholder=" de" name="de" />
       <button>ADD</button>
     </form>
   );

@@ -2,7 +2,7 @@ import "./Login.scss";
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { postData, postLogout } from "../../Ajax";
+import { postData, postLogout } from "../ajax/ajax";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/data";
 

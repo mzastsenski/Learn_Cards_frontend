@@ -1,7 +1,7 @@
 import "./Login.scss";
 import { useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { postData } from "../../Ajax";
+import { postData } from "../ajax/ajax";
 
 const Signup = () => {
   const userNameRef = useRef();

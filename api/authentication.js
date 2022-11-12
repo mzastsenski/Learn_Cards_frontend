@@ -25,7 +25,7 @@ router.post("/api/login", (req, res) => {
       const accessToken = newAccessToken({ name: req.body.user });
       res.cookie("token", accessToken, {
         httpOnly: true,
-        maxAge: 60 * 60 * 1000,
+        maxAge: 21 * 24 * 60 * 60 * 1000,
       });
       res.json(200);
     } else res.json(401);

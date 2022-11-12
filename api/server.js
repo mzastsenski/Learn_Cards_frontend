@@ -31,7 +31,7 @@ app.use(require("./requests.js"));
 app.use(require("./authentication.js"));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "index.html"));
+  // res.sendFile(path.resolve(__dirname, "index.html"));
   // res.redirect('/index.html');
 });
 

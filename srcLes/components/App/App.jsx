@@ -2,10 +2,19 @@ import CardsContainer from "../CardsContainer/CardsContainer";
 import Triggers from "../Triggers/Triggers";
 import Form from "../Form/Form";
 import { words } from "../data/words";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const App = () => {
   const [cards, setCards] = useState(words);
+
+  useEffect(() => {
+    const res = JSON.parse(localStorage.getItem("cards"));
+    setCards(res);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cards", JSON.stringify(cards));
+  }, [cards]);
 
   const addCard = (rus_value, eng_value) => {
     setCards([

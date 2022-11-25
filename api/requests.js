@@ -1,9 +1,6 @@
 const express = require("express");
 require("dotenv").config();
 const router = express.Router();
-// const db = require("./db");
-// const { MongoClient } = require("mongodb");
-// const MONGO_URI = require("./db.js");
 const { Client } = require("pg");
 const { auth, getUserFromToken } = require("./auth_functions.js");
 const db = new Client({

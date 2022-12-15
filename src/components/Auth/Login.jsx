@@ -1,25 +1,36 @@
+import "./Modal.scss";
 import "./Login.scss";
-import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { postData, postLogout } from "../ajax/ajax";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/data";
+import { useState, useEffect } from "react";
 
 const Login = () => {
-  const userNameRef = useRef();
-  const passwortRef = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [style, setStyle] = useState({
+    opacity: 0.3,
+  });
+
+  useEffect(() => {
+    setStyle({
+      opacity: 1,
+      transition: "0.6s",
+    });
+  }, []);
 
   const loginFault = () => {
     alert("Login Fault");
     localStorage.setItem("user", "");
   };
 
-  const login = () => {
-    const user = userNameRef.current.value;
-    const pass = passwortRef.current.value;
+  const login = (e) => {
+    e.preventDefault();
+    const user = e.target.user.value;
+    const pass = e.target.password.value;
     if (user && pass) {
       const data = { user: user, pass: pass, met: "login" };
       postData(data)
@@ -30,7 +41,7 @@ const Login = () => {
             navigate("/");
           } else loginFault();
         })
-        .catch((err) => loginFault());
+        .catch(() => loginFault());
     } else {
       alert("Enter your data");
     }
@@ -44,32 +55,29 @@ const Login = () => {
   };
 
   const jsx1 = (
-    <div className="Login">
+    <form className="Login" onSubmit={login}>
       <label className="field">
-        <span>User Name: </span>
-        <input ref={userNameRef} type="text"></input>
+        <input name="user" type="text" placeholder="Username"></input>
       </label>
       <label className="field">
-        <span>Passwort: </span>
         <input
-          ref={passwortRef}
+          name="password"
           onKeyPress={(e) => e.key === "Enter" && login()}
           type="password"
+          placeholder="Password"
         ></input>
       </label>
       <br />
       <div className="login_buttons">
-        <button type="button" onClick={login}>
-          Login
-        </button>
+        <button type="submit">Login</button>
         <NavLink to="/">
           <button type="button">Cancel</button>
         </NavLink>
       </div>
       <NavLink to="/Signup">
-        <p type="button">New user? Signup</p>
+        <p type="button">New user? Sign up</p>
       </NavLink>
-    </div>
+    </form>
   );
 
   const jsx2 = (
@@ -88,7 +96,13 @@ const Login = () => {
     </div>
   );
 
-  return <>{!localStorage.getItem("user") ? jsx1 : jsx2}</>;
+  return (
+    <div style={style} className="modal">
+      <div className="modal_content">
+        {!localStorage.getItem("user") ? jsx1 : jsx2}
+      </div>
+    </div>
+  );
 };
 
 export default Login;

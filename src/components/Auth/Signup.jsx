@@ -1,18 +1,16 @@
+import "./Modal.scss";
 import "./Login.scss";
-import { useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { postData } from "../ajax/ajax";
 
 const Signup = () => {
-  const userNameRef = useRef();
-  const passwortRef = useRef();
-  const passwortConfirmRef = useRef();
   const navigate = useNavigate();
 
-  const signUp = () => {
-    const user = userNameRef.current.value;
-    const pass = passwortRef.current.value;
-    const passConf = passwortConfirmRef.current.value;
+  const signUp = (e) => {
+    e.preventDefault();
+    const user = e.target.user.value;
+    const pass = e.target.password.value;
+    const passConf = e.target.confirm.value;
 
     if (user && pass && passConf && pass === passConf) {
       const data = { user: user, pass: pass, met: "signUp" };
@@ -31,33 +29,40 @@ const Signup = () => {
   };
 
   return (
-    <div className="Login">
-      <div className="Fields">
-        <label className="field">
-          <span>User Name: </span>
-          <input ref={userNameRef} type="text"></input>
-        </label>
-        <label className="field">
-          <span>Passwort: </span>
-          <input ref={passwortRef} type="password"></input>
-        </label>
-        <label className="field">
-          <span>Confirm Passwort: </span>
-          <input ref={passwortConfirmRef} type="password"></input>
-        </label>
+    <div className="modal">
+      <div className="modal_content">
+        <form className="Login" onSubmit={signUp}>
+          <div className="Fields">
+            <label className="field">
+              <input name="user" type="text" placeholder="Username"></input>
+            </label>
+            <label className="field">
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+              ></input>
+            </label>
+            <label className="field">
+              <input
+                name="confirm"
+                type="password"
+                placeholder="Confirm password"
+              ></input>
+            </label>
+          </div>
+          <br />
+          <div className="login_buttons">
+            <button type="submit">Sign up</button>
+            <NavLink to="/">
+              <button type="button">Cancel</button>
+            </NavLink>
+          </div>
+          <NavLink to="/Login">
+            <p type="button">Already registered? Login</p>
+          </NavLink>
+        </form>
       </div>
-      <br />
-      <div className="login_buttons">
-        <button type="button" onClick={signUp}>
-          Sign up
-        </button>
-        <NavLink to="/">
-          <button type="button">Cancel</button>
-        </NavLink>
-      </div>
-      <NavLink to="/Login">
-        <p type="button">Already registered? Login</p>
-      </NavLink>
     </div>
   );
 };

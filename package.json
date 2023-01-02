@@ -19,7 +19,8 @@
   },
   "scripts": {
     "start": "PORT=3002 react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run move",
+    "move": "rm -rf api/frontend && cp -R build api/ && mv api/build api/frontend",
     "server": "cd api && npm run server",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -11,7 +11,7 @@ const db = new Client({
 });
 db.connect();
 
-router.get("/api/cards/:user", (req, res) => {
+router.get("/api/cards/:user", auth, (req, res) => {
   const sql = "SELECT * FROM cards_cards WHERE user_name=$1";
   db.query(sql, [req.params.user], (err, result) => {
     res.send(result.rows);

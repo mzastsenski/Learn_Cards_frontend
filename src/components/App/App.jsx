@@ -19,7 +19,7 @@ const App = () => {
       user ? check() : dispatch(setCards(words));
     }
     return () => (effectRan.current = false);
-  }, [user]);
+  }, [user, dispatch]);
 
   const check = () => {
     checkUser().then((res) => {

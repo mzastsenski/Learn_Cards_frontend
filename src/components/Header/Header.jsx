@@ -13,7 +13,7 @@ let getWidth = () =>
   document.body.clientWidth;
 
 const Header = (props) => {
-  let [width, setWidth] = useState(getWidth());
+  let [, setWidth] = useState(getWidth());
   const user = useSelector((state) => state.user);
 
   useEffect(() => {

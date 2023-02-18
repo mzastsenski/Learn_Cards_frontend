@@ -2,7 +2,8 @@ const express = require("express");
 require("dotenv").config();
 const router = express.Router();
 const { Client } = require("pg");
-const { auth, getUserFromToken } = require("./auth_functions.js");
+const { auth } = require("../middleware/auth_functions.js");
+const { getUserFromToken } = require("../utils/jwt.js");
 const options = {
   connectionString: process.env.POSTGRES_URL,
   ssl: {

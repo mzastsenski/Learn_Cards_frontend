@@ -1,10 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const newAccessToken = (user) => {
-  return jwt.sign({ name: user.name }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "60m",
-  });
-};
+const { newAccessToken } = require("../utils/jwt");
 
 const auth = (req, res, next) => {
   const token = req.cookies.token;
@@ -28,11 +24,4 @@ const auth = (req, res, next) => {
   });
 };
 
-const getUserFromToken = (req) =>
-  jwt.verify(
-    req.cookies.token,
-    process.env.ACCESS_TOKEN_SECRET,
-    (err, user) => user.name
-  );
-
-module.exports = { auth, newAccessToken, getUserFromToken };
+module.exports = { auth };

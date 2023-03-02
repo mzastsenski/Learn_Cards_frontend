@@ -1,10 +1,10 @@
-import s from "./App.module.scss";
+import s from "./MainPage.module.scss";
 import CardsContainer from "../CardsContainer/CardsContainer";
 import Triggers from "../Triggers/Triggers";
 import Form from "../Form/Form";
-import { words } from "../data/words";
+import { words } from "../../data/defaultCards";
 import { useEffect, useRef } from "react";
-import { checkUser, getData } from "../ajax/ajax";
+import { checkUser, getData } from "../../requests";
 import { useSelector, useDispatch } from "react-redux";
 import { setData, setCards, setCollection, logout } from "../../redux/data";
 

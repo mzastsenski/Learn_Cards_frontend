@@ -2,9 +2,9 @@ import "./Modal.scss";
 import "./Login.scss";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { postData, postLogout } from "../ajax/ajax";
+import { postData } from "../../requests";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/data";
+import { setUser, logout } from "../../redux/data";
 import { useState, useEffect } from "react";
 
 const Login = () => {
@@ -47,10 +47,8 @@ const Login = () => {
     }
   };
 
-  const logout = () => {
-    localStorage.setItem("user", "");
-    dispatch(setUser(""));
-    postLogout();
+  const user_logout = () => {
+    dispatch(logout());
     navigate("/");
   };
 
@@ -86,7 +84,7 @@ const Login = () => {
         <>You are logged as {localStorage.getItem("user")}</>
       </div>
       <div className="login_buttons">
-        <button type="button" onClick={logout}>
+        <button type="button" onClick={user_logout}>
           Logout
         </button>
         <NavLink to="/">

@@ -1,5 +1,5 @@
 import s from "./Card.module.scss";
-import { deleteOneCard } from "../ajax/ajax";
+import { deleteOneCard } from "../../requests";
 import { useSelector, useDispatch } from "react-redux";
 import { setData, setCards, logout } from "../../redux/data";
 
@@ -41,10 +41,10 @@ export default function Card({ id, rus, eng, lang }) {
   };
   return (
     <div className={s.card} style={style} onClick={() => change_lang(id)}>
+      {renderWord}
       <button className={s.button} onClick={(e) => deleteCard(e)}>
         X
       </button>
-      {renderWord}
     </div>
   );
 }

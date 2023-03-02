@@ -19,13 +19,12 @@
   },
   "scripts": {
     "start": "PORT=3002 react-scripts start",
-    "build": "react-scripts build && npm run move",
-    "move": "rm -rf api/frontend && cp -R build api/ && mv api/build api/frontend",
-    "server": "cd api && npm run server",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "server": "cd .. && cd learn_cards_backend && npm run server",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://192.168.5.20:4000",
+  "proxy": "http://localhost:4000",
   "eslintConfig": {
     "extends": [
       "react-app",

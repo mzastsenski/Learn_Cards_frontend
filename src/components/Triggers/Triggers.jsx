@@ -1,6 +1,6 @@
 import s from "./Triggers.module.scss";
-import { words } from "../data/words";
-import { postCard, deleteOneCard } from "../ajax/ajax";
+import { words } from "../../data/defaultCards";
+import { postCard, deleteOneCard } from "../../requests";
 import { useSelector, useDispatch } from "react-redux";
 import { setData, setCards, setCollection } from "../../redux/data";
 

@@ -1,7 +1,7 @@
 import "./Modal.scss";
 import "./Login.scss";
 import { NavLink, useNavigate } from "react-router-dom";
-import { postData } from "../ajax/ajax";
+import { postData } from "../../requests";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Signup = () => {
       const data = { user: user, pass: pass, met: "signUp" };
       postData(data)
         .then((res) => {
-          if (res === "Success") {
+          if (res === 200) {
             navigate("/Login");
           } else {
             alert("User exist");

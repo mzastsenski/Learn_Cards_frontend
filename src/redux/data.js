@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { postLogout } from "../components/ajax/ajax";
+import { postLogout } from "../requests";
+import { words } from "../data/defaultCards";
 
 export const dataSlice = createSlice({
   name: "data",
@@ -27,10 +28,11 @@ export const dataSlice = createSlice({
       state.menuOpened = action.payload;
     },
     logout: (state, action) => {
-      state.user = "";
       localStorage.setItem("user", "");
+      state.user = "";
+      state.data = words;
+      state.collection = "Collection";
       postLogout();
-      alert("You are not logged in");
     },
   },
 });

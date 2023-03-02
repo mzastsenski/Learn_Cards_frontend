@@ -1,10 +1,10 @@
-let url = "";
+
 
 export const getData = (user) =>
-  fetch(`${url}api/cards/${user}`).then((res) => res.json());
+  fetch(`api/cards/${user}`).then((res) => res.json());
 
 export const postCard = async (data) => {
-  return await fetch(`${url}api/post`, {
+  return await fetch(`api/post`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -14,7 +14,7 @@ export const postCard = async (data) => {
 };
 
 export const postData = async (data) => {
-  return await fetch(`${url}api/${data.met}`, {
+  return await fetch(`api/${data.met}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -29,7 +29,7 @@ export const postData = async (data) => {
     .catch((err) => console.log(err));
 };
 export const deleteOneCard = async (data) => {
-  return await fetch(`${url}api/deleteCard`, {
+  return await fetch(`api/deleteCard`, {
     method: "delete",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -39,7 +39,7 @@ export const deleteOneCard = async (data) => {
 };
 
 export const checkUser = async () =>
-  await fetch(`${url}api/checkUser`, { method: "POST" });
+  await fetch(`api/checkUser`, { method: "POST" });
 
 export const postLogout = async () =>
-  await fetch(`${url}api/logout`, { method: "POST" }).then((res) => res.json());
+  await fetch(`api/logout`, { method: "POST" }).then((res) => res.json());

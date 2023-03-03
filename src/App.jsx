@@ -1,20 +1,18 @@
 import { Routes, Route } from "react-router-dom";
-import { HashRouter } from "react-router-dom";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import MainPage from "./pages/MainPage/MainPage";
-import Header from "./components/Header/Header";
+import Layout from "./components/Layout/Layout";
 
 const Router = () => {
   return (
-    <HashRouter>
-      <Header />
-      <Routes>
-        <Route exact path="/" element={<MainPage />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<MainPage />} />
         <Route path="Login" element={<Login />} />
-        <Route path="Signup" element={<Signup />} />
-      </Routes>
-    </HashRouter>
+        <Route path="Signup" element={<Signup />} />{" "}
+      </Route>
+    </Routes>
   );
 };
 

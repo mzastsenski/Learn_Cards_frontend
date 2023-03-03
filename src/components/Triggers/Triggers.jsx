@@ -48,9 +48,11 @@ export default function Triggers() {
     <div className={s.triggers}>
       <button onClick={change_to_eng}>Eng</button>
       <button onClick={change_to_de}>De</button>
-      <button className={s.red} onClick={() => clear()}>
-        Reset
-      </button>
+      {!user && (
+        <button className={s.red} onClick={() => clear()}>
+          Reset
+        </button>
+      )}
     </div>
   );
 }

@@ -8,8 +8,8 @@ export default function CardsContainer() {
 
   return (
     <div className={s.cards_container}>
-      {sortCards.map((e, i) => (
-        <Card {...e} key={i} />
+      {sortCards.map((e) => (
+        <Card {...e} key={e.id} />
       ))}
     </div>
   );

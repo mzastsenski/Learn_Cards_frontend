@@ -1,6 +1,4 @@
 .cards_container {
-  // display: flex;
-  // flex-wrap: wrap;
   width: 95%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -8,8 +6,7 @@
   gap: 20px;
   min-height: 300px;
 }
-
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 750px) {
   .cards_container {
     display: flex;
     justify-content: center;
@@ -20,5 +17,17 @@
   .cards_container div {
     min-width: 100px;
     height: 100px;
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  .cards_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cards_container div {
+    min-width: 300px;
+    height: 300px;
   }
 }

@@ -10,7 +10,7 @@ export const words = [
     id: 2,
     eng: "Head",
     rus: "Kopf",
-    lang: "rus",
+    lang: "eng",
     collection: "Collection",
   },
   {

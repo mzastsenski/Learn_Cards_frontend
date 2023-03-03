@@ -1,14 +1,48 @@
 .card {
   font-size: 22px;
   border-radius: 9px;
-  border: solid 3px rgb(41, 128, 185);
-  color: rgb(41, 128, 185);
+  cursor: pointer;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.card_inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipped .card_inner {
+  transform: rotateY(180deg);
+}
+
+.card_front,
+.card_back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.card_front {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-  cursor: pointer;
-  position: relative;
+  border-radius: 9px;
+  border: solid 3px rgb(41, 128, 185);
+  color: rgb(41, 128, 185);
+}
+
+.card_back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+  border: solid 3px rgb(41, 128, 185);
+  background-color: rgb(41, 128, 185);
+  color: white;
+  transform: rotateY(180deg);
 }
 
 .button {

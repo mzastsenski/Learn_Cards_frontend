@@ -1,5 +1,5 @@
 import s from "./Form.module.scss";
-import { postCard, getData } from "../../requests";
+import { postCard } from "../../requests";
 import { useSelector, useDispatch } from "react-redux";
 import { setCards, setData, logout } from "../../redux/data";
 
@@ -21,6 +21,8 @@ export default function Form() {
     };
     if (user) {
       addCardToDB(newCard);
+      dispatch(setCards([...cards, newCard]));
+      dispatch(setData([...data, newCard]));
     } else {
       dispatch(setCards([...cards, newCard]));
       dispatch(setData([...data, newCard]));
@@ -31,13 +33,6 @@ export default function Form() {
     newCard.user = user;
     postCard(newCard).then((res) => {
       if (res.status !== 200) dispatch(logout());
-      else {
-        getData(user).then((data) => {
-          const cards = data.filter((e) => e.collection === collection);
-          dispatch(setData(data));
-          dispatch(setCards(cards));
-        });
-      }
     });
   };
 

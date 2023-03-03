@@ -1,61 +1,42 @@
-import "./Header.scss";
+import s from "./Header.module.scss";
 import Collections from "../Collections/Collections";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { BiUser as UserIcon } from "react-icons/bi";
 import { FiPower as LoginIcon } from "react-icons/fi";
 import { useSelector } from "react-redux";
 
-let getWidth = () =>
-  window.innerWidth ||
-  document.documentElement.clientWidth ||
-  document.body.clientWidth;
-
-const Header = (props) => {
-  let [, setWidth] = useState(getWidth());
+export default function Header() {
   const user = useSelector((state) => state.user);
 
-  useEffect(() => {
-    const resizeListener = () => {
-      setWidth(getWidth());
-    };
-    window.addEventListener("resize", resizeListener);
-    return () => {
-      // window.removeEventListener('resize', resizeListener);
-    };
-  }, []);
-
   return (
-    <div className="header">
+    <div className={s.header}>
       <BurgerMenu />
       <Collections />
-      <span className="title">
-        <NavLink to="/" className="menuItem1">
+      <span className={s.title}>
+        <NavLink to="/" className={s.menuItem1}>
           Learn-Cards
         </NavLink>
       </span>
       {user ? (
         <>
-          <NavLink to="/Login" className="user_name">
+          <NavLink to="/Login" className={s.user_name}>
             &nbsp;{user}&nbsp;
           </NavLink>
-          <NavLink to="/Login" className="user_name">
+          <NavLink to="/Login">
             <UserIcon size={31} />
           </NavLink>
         </>
       ) : (
         <>
-          <NavLink to="/Login" className="user_name">
+          <NavLink to="/Login" className={s.user_name}>
             &nbsp;Login&nbsp;
           </NavLink>
-          <NavLink to="/Login" className="user_name">
+          <NavLink to="/Login">
             <LoginIcon size={30} />
           </NavLink>
         </>
       )}
     </div>
   );
-};
-
-export default Header;
+}

@@ -51,7 +51,7 @@ export default function Card({ id, de, eng, lang }) {
     >
       <div className={s.card_inner}>
         <div className={s.card_front}>
-          s{de}
+          {de}
           <button className={s.button} onClick={deleteCard}>
             X
           </button>

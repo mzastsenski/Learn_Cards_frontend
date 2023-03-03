@@ -14,7 +14,7 @@ export default function Form() {
     e.preventDefault();
     const newCard = {
       id: Date.now(),
-      rus: e.target.de.value,
+      de: e.target.de.value,
       eng: e.target.eng.value,
       lang: "eng",
       collection: collection,

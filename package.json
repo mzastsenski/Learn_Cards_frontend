@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://learncards.mzas.de",
+  "proxy": "https://learn-cards.mzas.de",
   "eslintConfig": {
     "extends": [
       "react-app",

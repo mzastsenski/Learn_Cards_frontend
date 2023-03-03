@@ -1,7 +1,7 @@
 import s from "./MainPage.module.scss";
-import CardsContainer from "../CardsContainer/CardsContainer";
-import Triggers from "../Triggers/Triggers";
-import Form from "../Form/Form";
+import CardsContainer from "../../components/CardsContainer/CardsContainer";
+import Triggers from "../../components/Triggers/Triggers";
+import Form from "../../components/Form/Form";
 import { words } from "../../data/defaultCards";
 import { useEffect, useRef } from "react";
 import { checkUser, getData } from "../../requests";
@@ -48,7 +48,7 @@ const App = () => {
   };
 
   return (
-    <div className={s.app}>
+    <div className={s.main_page}>
       <h2>{collection}</h2>
       <Form />
       <CardsContainer />

@@ -39,7 +39,7 @@ export default function Triggers() {
   const change_to_de = () => {
     const newCards = cards.map((el) => ({
       ...el,
-      lang: "rus",
+      lang: "de",
     }));
     dispatch(setCards(newCards));
   };

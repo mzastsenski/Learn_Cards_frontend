@@ -3,12 +3,14 @@
 }
 .triggers button {
   color: white;
-  background-color: green;
+  background-color: rgb(1, 154, 1);
   border: transparent 1px;
-  border-radius: 5px;
+  border-radius: 56px;
+  letter-spacing: 1px;
+  font-size: 15px;
   padding: 10px;
   margin: 5px;
-  width: 60px;
+  width: 80px;
 }
 
 button.red {

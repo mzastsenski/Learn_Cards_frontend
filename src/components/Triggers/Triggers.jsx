@@ -1,10 +1,12 @@
 import s from "./Triggers.module.scss";
 import { words } from "../../data/defaultCards";
 import { postCard, deleteOneCard } from "../../requests";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setData, setCards, setCollection } from "../../redux/data";
 
 export default function Triggers() {
+  const [flipped, setFlipped] = useState(false);
   const user = useSelector((state) => state.user);
   const data = useSelector((state) => state.data);
   const cards = useSelector((state) => state.renderCards);
@@ -44,10 +46,14 @@ export default function Triggers() {
     dispatch(setCards(newCards));
   };
 
+  const flip = () => {
+    !flipped ? change_to_de() : change_to_eng();
+    setFlipped(!flipped);
+  };
+
   return (
     <div className={s.triggers}>
-      <button onClick={change_to_eng}>Eng</button>
-      <button onClick={change_to_de}>De</button>
+      <button onClick={flip}>Flip All</button>
       {!user && (
         <button className={s.red} onClick={() => clear()}>
           Reset

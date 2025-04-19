@@ -9,15 +9,18 @@
 }
 
 .form input {
-  border-radius: 5px;
+  border-radius: 56px;
   border: 1px grey solid;
 }
 
 .form button {
   color: white;
-  background-color: rgb(19, 140, 19);
+  background-color: rgb(1, 154, 1);
+  letter-spacing: 1px;
+  font-size: 14px;
   border: none;
-  border-radius: 5px;
+  border-radius: 56px;
+  width: 58px;
 }
 
 @media screen and (max-width: 550px) {

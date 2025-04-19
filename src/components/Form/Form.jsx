@@ -40,7 +40,7 @@ export default function Form() {
     <form className={s.form} onSubmit={(e) => submit(e)}>
       <input type="text" placeholder=" eng" name="eng" />
       <input type="text" placeholder=" de" name="de" />
-      <button>ADD</button>
+      <button>Add</button>
     </form>
   );
 }

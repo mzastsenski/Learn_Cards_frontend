@@ -38,8 +38,8 @@ export default function Form() {
 
   return (
     <form className={s.form} onSubmit={(e) => submit(e)}>
-      <input type="text" placeholder=" eng" name="eng" />
-      <input type="text" placeholder=" de" name="de" />
+      <input type="text" placeholder="eng" name="eng" />
+      <input type="text" placeholder="de" name="de" />
       <button>Add</button>
     </form>
   );

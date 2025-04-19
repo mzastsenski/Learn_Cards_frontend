@@ -1,2 +1,2 @@
-https://learn-cards.mzas.de
-![Screenshot 2023-03-03 at 13 49 45](https://user-images.githubusercontent.com/94635228/222724615-25e07b83-5582-475d-bdd9-3d8f7689d1cc.png)
+https://learncards.mzas.de
+![Screenshot 2025-04-19 at 17 37 43](https://github.com/user-attachments/assets/cedbc73f-cac2-4cbf-ae7e-7ffb8e3eba78)

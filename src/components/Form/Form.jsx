@@ -27,6 +27,8 @@ export default function Form() {
       dispatch(setCards([...cards, newCard]));
       dispatch(setData([...data, newCard]));
     }
+    e.target.eng.value = "";
+    e.target.de.value = "";
   };
 
   const addCardToDB = (newCard) => {

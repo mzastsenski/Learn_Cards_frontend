@@ -1,9 +1,9 @@
-// $main-color: rgb(37, 140, 208);
-$main-color: rgb(39, 137, 201);
-$icon-hover: rgba(255, 255, 255, 0.781);
+@import "../../constants.scss";
 
 .header {
   background-color: $main-color;
+  position: fixed;
+  z-index: 50;
   display: grid;
   grid-template-columns: 1fr 80px 40px 11px;
   text-align: center;
@@ -44,7 +44,7 @@ $icon-hover: rgba(255, 255, 255, 0.781);
 
 @media (max-width: 768px) {
   .header {
-    height: 76px;
+    height: 66px;
     .title {
       padding-top: 3px;
       font-size: 21px;

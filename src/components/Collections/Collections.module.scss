@@ -1,3 +1,5 @@
+@import "../../constants.scss";
+
 $menu-width: 100%;
 
 .collections {
@@ -58,7 +60,7 @@ $menu-width: 100%;
     width: 225px;
     height: 42px;
     color: white;
-    background-color: rgb(41, 128, 185);
+    background-color: $main_color;
     border: transparent 1px;
     border-radius: 5px;
     font-size: 16px;

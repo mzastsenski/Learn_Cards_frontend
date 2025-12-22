@@ -1,5 +1,4 @@
-$base-color: rgb(41, 128, 185);
-$hover-color: rgb(97, 182, 238);
+@import "../../constants.scss";
 
 .Login {
   display: flex;
@@ -36,7 +35,7 @@ $hover-color: rgb(97, 182, 238);
     font-family: "Charter", serif;
     letter-spacing: 2px;
     color: rgb(255, 255, 255);
-    background-color: $base-color;
+    background-color: $main-color;
     border-radius: 20px;
     border: 0;
     transition-duration: 0.4s;

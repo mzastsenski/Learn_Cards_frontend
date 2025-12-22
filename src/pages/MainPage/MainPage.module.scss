@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: 85px;
   h2 {
     margin: 10px 0;
     text-align: center;
@@ -23,5 +24,8 @@
 @media (max-width: 768px) {
   * {
     margin: 0;
+  }
+  .main_page {
+    margin-top: 69px;
   }
 }

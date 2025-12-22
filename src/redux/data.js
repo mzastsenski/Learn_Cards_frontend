@@ -27,7 +27,7 @@ export const dataSlice = createSlice({
     setOpened: (state, action) => {
       state.menuOpened = action.payload;
     },
-    logout: (state, action) => {
+    logout: (state) => {
       localStorage.setItem("user", "");
       state.user = "";
       state.data = words;

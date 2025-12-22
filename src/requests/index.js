@@ -1,4 +1,4 @@
-
+import { setData, setCards, logout } from "../redux/data";
 
 export const getData = (user) =>
   fetch(`api/cards/${user}`).then((res) => res.json());
@@ -38,8 +38,17 @@ export const deleteOneCard = async (data) => {
   });
 };
 
-export const checkUser = async () =>
-  await fetch(`api/checkUser`, { method: "POST" });
+export const checkUser = async (user, collection, changeCollection, dispatch) =>
+  await fetch(`api/checkUser`, { method: "POST" }).then((res) => {
+    if (res.status !== 200) dispatch(logout());
+    else {
+      getData(user).then((data) => {
+        const cards = data.filter((e) => e.collection === collection);
+        dispatch(setData(data));
+        !cards[0] ? changeCollection(data) : dispatch(setCards(cards));
+      });
+    }
+  });
 
 export const postLogout = async () =>
   await fetch(`api/logout`, { method: "POST" }).then((res) => res.json());

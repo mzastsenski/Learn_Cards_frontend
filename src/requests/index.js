@@ -1,7 +1,28 @@
-import { setData, setCards, logout } from "../redux/data";
+import { setData, setCards, setCollection, logout } from "../redux/data";
 
-export const getData = (user) =>
-  fetch(`api/cards/${user}`).then((res) => res.json());
+export const getData = (user, collection, dispatch) => {
+  return fetch(`api/cards/${user}`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data && data !== 401) {
+        dispatch(setData(data));
+        const cards = data.filter((e) => e.collection === collection);
+        if (cards[0]) dispatch(setCards(cards));
+        else {
+          const arr = [];
+          data.forEach((e) => {
+            if (!arr.includes(e.collection)) arr.push(e.collection);
+          });
+          if (arr[0]) {
+            const newCollecton = arr[0];
+            dispatch(setCollection(newCollecton));
+            const cards = data.filter((e) => e.collection === newCollecton);
+            dispatch(setCards(cards));
+          }
+        }
+      } else dispatch(logout());
+    });
+};
 
 export const postCard = async (data) => {
   return await fetch(`api/post`, {
@@ -28,6 +49,7 @@ export const postData = async (data) => {
     })
     .catch((err) => console.log(err));
 };
+
 export const deleteOneCard = async (data) => {
   return await fetch(`api/deleteCard`, {
     method: "delete",
@@ -38,17 +60,15 @@ export const deleteOneCard = async (data) => {
   });
 };
 
-export const checkUser = async (user, collection, changeCollection, dispatch) =>
-  await fetch(`api/checkUser`, { method: "POST" }).then((res) => {
-    if (res.status !== 200) dispatch(logout());
-    else {
-      getData(user).then((data) => {
-        const cards = data.filter((e) => e.collection === collection);
-        dispatch(setData(data));
-        !cards[0] ? changeCollection(data) : dispatch(setCards(cards));
-      });
-    }
+export const deleteCollection = async (data) => {
+  return await fetch(`api/deleteCollection`, {
+    method: "delete",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(data),
   });
+};
 
 export const postLogout = async () =>
-  await fetch(`api/logout`, { method: "POST" }).then((res) => res.json());
+  await fetch(`api/logout`, { method: "POST" });

@@ -32,16 +32,16 @@ $menu-width: 100%;
 }
 
 .form label {
-  border-radius: 5px;
+  border-radius: 56px;
   border: 1px grey solid;
   background-color: #f7f8fa;
   padding-left: 10px;
 }
 
 .form label input {
-  border-radius: 5px;
   border: none;
   height: 32px;
+  font-size: 14px;
   outline: none;
   background: none;
 }
@@ -50,12 +50,19 @@ $menu-width: 100%;
   color: white;
   background-color: rgb(19, 140, 19);
   border: none;
-  border-radius: 5px;
+  font-size: 15px;
+  letter-spacing: 0.7px;
+  border-radius: 56px;
+  padding: 0 14px;
 }
 
 .collections_list {
   display: flex;
   flex-direction: column;
+  margin-bottom: 60px;
+  div {
+    display: flex;
+  }
   button {
     width: 225px;
     height: 42px;
@@ -67,6 +74,11 @@ $menu-width: 100%;
     padding-left: 14px;
     margin: 5px;
     text-align: left;
+  }
+  .delete_button {
+    background-color: rgb(232, 4, 4);
+    width: 42px;
+    padding-left: 16px;
   }
 }
 

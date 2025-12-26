@@ -6,7 +6,7 @@ import { setCards, setData, logout } from "../../redux/data";
 export default function Form() {
   const user = useSelector((state) => state.user);
   const data = useSelector((state) => state.data);
-  const cards = useSelector((state) => state.renderCards);
+  const cards = useSelector((state) => state.renderedCards);
   const collection = useSelector((state) => state.collection);
   const dispatch = useDispatch();
 

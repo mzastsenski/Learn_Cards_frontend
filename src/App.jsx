@@ -4,7 +4,7 @@ import Signup from "./pages/Auth/Signup";
 import MainPage from "./pages/MainPage/MainPage";
 import Layout from "./components/Layout/Layout";
 
-const Router = () => {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -16,4 +16,4 @@ const Router = () => {
   );
 };
 
-export default Router;
+export default App;

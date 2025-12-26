@@ -1,4 +1,4 @@
-export const words = [
+export const defaultCards = [
   {
     id: 1,
     eng: "Table",

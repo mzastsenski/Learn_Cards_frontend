@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { defaultCards } from "../data/defaultCards";
 import { postLogout } from "../requests";
-import { words } from "../data/defaultCards";
 
 export const dataSlice = createSlice({
   name: "data",
   initialState: {
     data: [],
-    renderCards: [],
+    renderedCards: [],
     menuOpened: false,
     user: localStorage.getItem("user"),
     collection: "Collection",
@@ -16,7 +16,7 @@ export const dataSlice = createSlice({
       state.data = action.payload;
     },
     setCards: (state, action) => {
-      state.renderCards = action.payload;
+      state.renderedCards = action.payload;
     },
     setUser: (state, action) => {
       state.user = action.payload;
@@ -30,8 +30,9 @@ export const dataSlice = createSlice({
     logout: (state) => {
       localStorage.setItem("user", "");
       state.user = "";
-      state.data = words;
       state.collection = "Collection";
+      state.data = defaultCards;
+      state.renderedCards = defaultCards;
       postLogout();
     },
   },

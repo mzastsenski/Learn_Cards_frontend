@@ -3,7 +3,7 @@ import s from "./CardsContainer.module.scss";
 import { useSelector } from "react-redux";
 
 export default function CardsContainer() {
-  const cards = useSelector((state) => state.renderCards);
+  const cards = useSelector((state) => state.renderedCards);
   const sortCards = [...cards].sort((a, b) => a.id - b.id);
 
   return (

@@ -1,6 +1,6 @@
 import s from "./Triggers.module.scss";
-import { words } from "../../data/defaultCards";
-import { postCard, deleteOneCard } from "../../requests";
+import { defaultCards } from "../../data/defaultCards";
+import { deleteOneCard } from "../../requests";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setData, setCards, setCollection } from "../../redux/data";
@@ -9,7 +9,7 @@ export default function Triggers() {
   const [flipped, setFlipped] = useState(false);
   const user = useSelector((state) => state.user);
   const data = useSelector((state) => state.data);
-  const cards = useSelector((state) => state.renderCards);
+  const cards = useSelector((state) => state.renderedCards);
   const dispatch = useDispatch();
 
   const clear = () => {
@@ -17,16 +17,11 @@ export default function Triggers() {
       data.forEach((e) => {
         if (e.collection === "Collection") deleteOneCard({ id: e.id });
       });
-      const newData = [...data];
-      words.forEach((e) => {
-        newData.push(e);
-        postCard(e);
-      });
       dispatch(setCollection("Collection"));
-      dispatch(setData(newData));
-      dispatch(setCards(words));
+      dispatch(setData(defaultCards));
+      dispatch(setCards(defaultCards));
     } else {
-      dispatch(setCards(words));
+      dispatch(setCards(defaultCards));
     }
   };
 

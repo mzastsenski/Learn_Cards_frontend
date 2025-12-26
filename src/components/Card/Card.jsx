@@ -6,7 +6,7 @@ import { setData, setCards, logout } from "../../redux/data";
 
 export default function Card({ id, de, eng, lang }) {
   const dispatch = useDispatch();
-  const cards = useSelector((state) => state.renderCards);
+  const cards = useSelector((state) => state.renderedCards);
   const data = useSelector((state) => state.data);
   const user = useSelector((state) => state.user);
   const [flipped, setFlipped] = useState(false);

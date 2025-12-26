@@ -2,7 +2,7 @@ import "./Modal.scss";
 import "./Login.scss";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { postData } from "../../requests";
+import { getData, postData } from "../../requests";
 import { useDispatch } from "react-redux";
 import { setUser, logout } from "../../redux/data";
 import { useState, useEffect } from "react";
@@ -38,6 +38,7 @@ const Login = () => {
           if (res === 200) {
             localStorage.setItem("user", user);
             dispatch(setUser(user));
+            getData(user, "Collection", dispatch);
             navigate("/");
           } else loginFault();
         })

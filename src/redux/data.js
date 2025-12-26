@@ -18,6 +18,11 @@ export const dataSlice = createSlice({
     setCards: (state, action) => {
       state.renderedCards = action.payload;
     },
+    setDefault: (state) => {
+      state.data = defaultCards;
+      state.renderedCards = defaultCards;
+      state.collection = "Collection";
+    },
     setUser: (state, action) => {
       state.user = action.payload;
     },
@@ -38,7 +43,14 @@ export const dataSlice = createSlice({
   },
 });
 
-export const { setData, setCards, setUser, setCollection, setOpened, logout } =
-  dataSlice.actions;
+export const {
+  setData,
+  setCards,
+  setDefault,
+  setUser,
+  setCollection,
+  setOpened,
+  logout,
+} = dataSlice.actions;
 
 export default dataSlice.reducer;

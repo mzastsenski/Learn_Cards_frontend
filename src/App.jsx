@@ -3,8 +3,24 @@ import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import MainPage from "./pages/MainPage/MainPage";
 import Layout from "./components/Layout/Layout";
+import { useEffect, useRef } from "react";
+import { getData } from "./requests";
+import { useSelector, useDispatch } from "react-redux";
+import { setDefault } from "./redux/data";
 
 const App = () => {
+  const user = useSelector((state) => state.user);
+  const collection = useSelector((state) => state.collection);
+  const dispatch = useDispatch();
+  const effectRan = useRef(false); // first load
+
+  useEffect(() => {
+    if (!effectRan.current) {
+      user ? getData(user, collection, dispatch) : dispatch(setDefault());
+    }
+    return () => (effectRan.current = true);
+  }, [user, collection, dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

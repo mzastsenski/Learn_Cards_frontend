@@ -23,10 +23,19 @@ export default function Collections() {
   const newCollection = (e) => {
     e.preventDefault();
     const newCollection = e.target.name.value;
-    setCollections([...collections, newCollection]);
-    dispatch(setCollection(newCollection));
-    changeCollection(newCollection);
-    dispatch(setOpened(!isOpened));
+    if (newCollection === "") alert("name your new collection");
+    else {
+      const exists = collections.find((e) => e === newCollection);
+      if (exists !== undefined) {
+        alert("Collection exists");
+      } else {
+        setCollections([...collections, newCollection]);
+        dispatch(setCollection(newCollection));
+        changeCollection(newCollection);
+        dispatch(setOpened(!isOpened));
+        e.target.name.value = "";
+      }
+    }
   };
 
   const changeCollection = (collection) => {
@@ -42,12 +51,19 @@ export default function Collections() {
 
   const removeCollection = async (collection) => {
     if (window.confirm("Do you want to remove this collection?")) {
-      const data = {
-        user,
-        collection,
-      };
-      await deleteCollection(data);
-      getData(user, stateCollection, dispatch);
+      if (user) {
+        await deleteCollection({
+          user,
+          collection,
+        });
+        getData(user, stateCollection, dispatch);
+      } else {
+        const newCollections = collections.filter((e) => e !== collection);
+        setCollections(newCollections);
+        dispatch(setCollection(newCollections[0]));
+        const cards = data.filter((e) => e.collection === newCollections[0]);
+        dispatch(setCards(cards));
+      }
     }
   };
 

@@ -1,49 +1,25 @@
 import s from "./Triggers.module.scss";
-import { defaultCards } from "../../data/defaultCards";
-import { deleteOneCard } from "../../requests";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setData, setCards, setCollection } from "../../redux/data";
+import { setCards, setDefault } from "../../redux/data";
 
 export default function Triggers() {
   const [flipped, setFlipped] = useState(false);
   const user = useSelector((state) => state.user);
-  const data = useSelector((state) => state.data);
   const cards = useSelector((state) => state.renderedCards);
   const dispatch = useDispatch();
 
-  const clear = () => {
-    if (user) {
-      data.forEach((e) => {
-        if (e.collection === "Collection") deleteOneCard({ id: e.id });
-      });
-      dispatch(setCollection("Collection"));
-      dispatch(setData(defaultCards));
-      dispatch(setCards(defaultCards));
-    } else {
-      dispatch(setCards(defaultCards));
-    }
-  };
-
-  const change_to_eng = () => {
-    const newCards = cards.map((el) => ({
-      ...el,
-      lang: "eng",
-    }));
-    dispatch(setCards(newCards));
-  };
-
-  const change_to_de = () => {
-    const newCards = cards.map((el) => ({
-      ...el,
-      lang: "de",
-    }));
-    dispatch(setCards(newCards));
-  };
-
   const flip = () => {
-    !flipped ? change_to_de() : change_to_eng();
+    const newCards = cards.map((e) => ({
+      ...e,
+      lang: flipped ? "eng" : "de",
+    }));
     setFlipped(!flipped);
+    dispatch(setCards(newCards));
+  };
+
+  const clear = () => {
+    dispatch(setDefault());
   };
 
   return (

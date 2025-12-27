@@ -16,7 +16,7 @@ const App = () => {
 
   useEffect(() => {
     if (!effectRan.current) {
-      user ? getData(user, collection, dispatch) : dispatch(setDefault());
+      user ? dispatch(getData(user)) : dispatch(setDefault());
     }
     return () => (effectRan.current = true);
   }, [user, collection, dispatch]);

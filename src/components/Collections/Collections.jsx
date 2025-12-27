@@ -7,7 +7,6 @@ import { getData, deleteCollection } from "../../requests";
 export default function Collections() {
   const data = useSelector((state) => state.data);
   const user = useSelector((state) => state.user);
-  const stateCollection = useSelector((state) => state.collection);
   const isOpened = useSelector((state) => state.menuOpened);
   const [collections, setCollections] = useState([]);
   const dispatch = useDispatch();
@@ -56,7 +55,7 @@ export default function Collections() {
           user,
           collection,
         });
-        getData(user, stateCollection, dispatch);
+        dispatch(getData(user));
       } else {
         const newCollections = collections.filter((e) => e !== collection);
         setCollections(newCollections);

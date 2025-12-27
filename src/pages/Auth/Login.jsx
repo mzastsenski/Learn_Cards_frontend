@@ -38,7 +38,7 @@ const Login = () => {
           if (res === 200) {
             localStorage.setItem("user", user);
             dispatch(setUser(user));
-            getData(user, "Collection", dispatch);
+            dispatch(getData(user));
             navigate("/");
           } else loginFault();
         })

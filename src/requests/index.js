@@ -1,28 +1,8 @@
-import { setData, setCards, setCollection, logout } from "../redux/data";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getData = (user, collection, dispatch) => {
-  return fetch(`api/cards/${user}`)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data && data !== 401) {
-        dispatch(setData(data));
-        const cards = data.filter((e) => e.collection === collection);
-        if (cards[0]) dispatch(setCards(cards));
-        else {
-          const arr = [];
-          data.forEach((e) => {
-            if (!arr.includes(e.collection)) arr.push(e.collection);
-          });
-          if (arr[0]) {
-            const newCollecton = arr[0];
-            dispatch(setCollection(newCollecton));
-            const cards = data.filter((e) => e.collection === newCollecton);
-            dispatch(setCards(cards));
-          }
-        }
-      } else dispatch(logout());
-    });
-};
+export const getData = createAsyncThunk("data/getData", (user) =>
+  fetch(`api/cards/${user}`).then((res) => res.json())
+);
 
 export const postCard = async (data) => {
   return await fetch(`api/post`, {

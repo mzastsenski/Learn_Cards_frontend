@@ -1,7 +1,7 @@
-@use "../../constants";
+@use "../../constants" as *;
 
 .header {
-  background-color: constants.$main-color;
+  background-color: $main-color;
   position: fixed;
   z-index: 50;
   display: grid;
@@ -24,7 +24,7 @@
     color: white;
     text-decoration: none;
     &:hover {
-      color: constants.$icon-hover;
+      color: $icon-hover;
     }
   }
   a.active {
@@ -32,12 +32,12 @@
     color: white;
   }
   .user_name {
-    background-color: constants.$main-color;
+    background-color: $main-color;
     align-self: center;
     color: white;
     font-family: "Cambria", serif;
     &:hover {
-      color: constants.$icon-hover;
+      color: $icon-hover;
     }
   }
 }

@@ -1,7 +1,7 @@
-@import "../../constants.scss";
+@use "../../constants";
 
 .header {
-  background-color: $main-color;
+  background-color: constants.$main-color;
   position: fixed;
   z-index: 50;
   display: grid;
@@ -24,7 +24,7 @@
     color: white;
     text-decoration: none;
     &:hover {
-      color: $icon-hover;
+      color: constants.$icon-hover;
     }
   }
   a.active {
@@ -32,12 +32,12 @@
     color: white;
   }
   .user_name {
-    background-color: $main-color;
+    background-color: constants.$main-color;
     align-self: center;
     color: white;
     font-family: "Cambria", serif;
     &:hover {
-      color: $icon-hover;
+      color: constants.$icon-hover;
     }
   }
 }

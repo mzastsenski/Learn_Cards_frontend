@@ -1,4 +1,4 @@
-@import "../../constants.scss";
+@use "../../constants";
 
 $menu-width: 100%;
 
@@ -67,7 +67,7 @@ $menu-width: 100%;
     width: 225px;
     height: 42px;
     color: white;
-    background-color: $main_color;
+    background-color: constants.$main_color;
     border: transparent 1px;
     border-radius: 5px;
     font-size: 16px;

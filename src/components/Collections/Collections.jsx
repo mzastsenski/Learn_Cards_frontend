@@ -5,8 +5,7 @@ import { setCollection, setCards, setOpened } from "../../redux/data";
 import { getData, deleteCollection } from "../../requests";
 
 export default function Collections() {
-  const data = useSelector((state) => state.data);
-  const user = useSelector((state) => state.user);
+  const { data, user } = useSelector((state) => state);
   const isOpened = useSelector((state) => state.menuOpened);
   const [collections, setCollections] = useState([]);
   const dispatch = useDispatch();

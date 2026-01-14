@@ -9,8 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setDefault } from "./redux/data";
 
 const App = () => {
-  const user = useSelector((state) => state.user);
-  const collection = useSelector((state) => state.collection);
+  const { user, collection } = useSelector((state) => state);
   const dispatch = useDispatch();
   const effectRan = useRef(false); // first load
 
